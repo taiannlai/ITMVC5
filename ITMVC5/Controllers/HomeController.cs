@@ -26,5 +26,11 @@ namespace ITMVC5.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+
+            return View();
+        }
     }
 }
