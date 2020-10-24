@@ -11,25 +11,25 @@ namespace ITMVC5.Models
     {
         public int Id { get; set; }
         [DisplayName("重要度")]
-        [Required(ErrorMessage = "重要度為必填")]
+        [Required(ErrorMessageResourceName = "Importance_Required", ErrorMessageResourceType = typeof(Resource1))]
         public string Importance { get; set; }
         [DisplayName("部門")]
-        [Required]
+        [Required(ErrorMessageResourceName = "Dep_Required", ErrorMessageResourceType = typeof(Resource1))]
         public string Dep { get; set; }
         [DisplayName("提出人員")]
-        [Required]
+        [Required(ErrorMessageResourceName = "Name_Required", ErrorMessageResourceType = typeof(Resource1))]
         public string Name { get; set; }
         [DisplayName("提出問題")]
-        [Required]
+        [Required(ErrorMessageResourceName = "Problem_Required", ErrorMessageResourceType = typeof(Resource1))]
         public string Problem { get; set; }
         [DisplayName("問題原因")]
-        [Required]
+        [Required(ErrorMessageResourceName = "schedule_Required", ErrorMessageResourceType = typeof(Resource1))]
         public string schedule { get; set; }
         [DisplayName("狀態")]
-        [Required]
+        [Required(ErrorMessageResourceName = "status_Required", ErrorMessageResourceType = typeof(Resource1))]
         public string status { get; set; }
         [DisplayName("完成度")]
-        [Required]
+        [Required(ErrorMessageResourceName = "Percent_Required", ErrorMessageResourceType = typeof(Resource1))]
         [Range(0,100)]
         public int Percent { get; set; }
     }
