@@ -32,6 +32,7 @@ namespace ITMVC5.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Lists lists)
         {
             if (ModelState.IsValid)
@@ -51,6 +52,7 @@ namespace ITMVC5.Controllers
 
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Lists lists)
         {
             if (ModelState.IsValid)
@@ -76,6 +78,7 @@ namespace ITMVC5.Controllers
             return View(data.FirstOrDefault(p => p.Id == id));
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection form)
         {
             if (ModelState.IsValid)
@@ -92,6 +95,7 @@ namespace ITMVC5.Controllers
             return View(data.FirstOrDefault(p => p.Id == id));
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Details(int id, Lists lists)
         {
             if (ModelState.IsValid)
