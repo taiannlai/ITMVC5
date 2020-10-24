@@ -1,9 +1,12 @@
 ﻿using ITMVC5.Models;
+using ITMVC5.ViewModel;
+using Omu.ValueInjecter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace ITMVC5.Controllers
 {
@@ -48,28 +51,33 @@ namespace ITMVC5.Controllers
         public ActionResult Edit(int id)
         {
 
+
             return View(data.FirstOrDefault(p => p.Id == id));
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Lists lists)
+        public ActionResult Edit(ListViewModel viewModel, int id)
         {
+
             if (ModelState.IsValid)
             {
-                var one = data.FirstOrDefault(p => p.Id == id);
-                one.Importance = lists.Importance;
-                one.Name = lists.Name;
-                one.Percent = lists.Percent;
-                one.Problem = lists.Problem;
-                one.schedule = lists.schedule;
-                one.status = lists.status;
-                one.Dep = lists.Dep;
+                var worklist = data.FirstOrDefault(p => p.Id == id);
+
+                worklist.InjectFrom(viewModel);
+                //var one = data.FirstOrDefault(p => p.Id == id);
+                //one.Importance = lists.Importance;
+                //one.Name = lists.Name;
+                //one.Percent = lists.Percent;
+                //one.Problem = lists.Problem;
+                //one.schedule = lists.schedule;
+                //one.status = lists.status;
+                //one.Dep = lists.Dep;
 
                 return RedirectToAction("Index");
             }
 
-            return View(lists);
+            return View(viewModel);
         }
 
         public ActionResult Delete(int id)
